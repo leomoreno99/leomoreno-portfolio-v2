@@ -1,0 +1,131 @@
+---
+import KBD from "./KBD.astro";
+import LinkButton from "./LinkButton.astro";
+import GitHubIcon from "./icons/GitHub.astro";
+import GoToIcon from "./icons/GoTo.astro";
+interface Props {
+  title: string;
+  description: string;
+  link?: string;
+  github?: string;
+  image: string;
+  tags: string[];
+}
+
+const { title, description, link, github, image, tags } = Astro.props;
+---
+
+<div
+  class="grid gap-4 pb-1 sm:min-w-[528px] sm:max-w-[528px] sm:grid-cols-8 sm:gap-8 md:gap-4
+  relative rounded-md border-[1px] px-3 py-4 shadow-sm border-neutral-800"
+  role="contentinfo"
+  tabindex="0"
+  aria-label="Project"
+  data-title={title}
+>
+  <input
+    aria-hidden="true"
+    class="input-animation pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-[0.310rem] border transition-opacity duration-500 placeholder:select-none border-yellow-100/50"
+    style="background-color: transparent; opacity: 0;"
+  />
+  <div
+    class="div-animation pointer-events-none absolute -inset-px rounded-md opacity-1 transition duration-300"
+  >
+  </div>
+  <div class="flex flex-col justify-between z-10 sm:order-2 sm:col-span-6">
+    <div>
+      <h3 class="text-gray-200 font-bold">
+        {title}
+      </h3>
+      <p class="mt-2 text-gray-400 leading-normal">
+        {description}
+      </p>
+      <div class="pt-4 flex flex-wrap gap-2 md:col-span-3 md:col-start-3">
+        {tags && tags.map((tag) => <KBD>{tag}</KBD>)}
+      </div>
+    </div>
+    <div class="nav flex gap-2 my-2 justify-end" data-orientation="horizontal">
+      {
+        github && (
+          <LinkButton href={github}>
+            <GitHubIcon class="size-4 stroke-white/60" />
+          </LinkButton>
+        )
+      }
+      {
+        link && (
+          <LinkButton href={link}>
+            <GoToIcon class="size-4 stroke-white/60" />
+          </LinkButton>
+          )
+      }
+    </div>
+    <div class="tip" aria-hidden="true">
+      <div class="tip__track">
+        <div>About</div>
+        <div>Work</div>
+      </div>
+    </div>
+  </div>
+  <img
+    src={image}
+    alt={title}
+    class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 md:w-[120px] sm:order-1 sm:col-span-2 sm:translate-y-1"
+  />
+</div>
+
+<script>
+  const divs = document.querySelectorAll(
+    '[role="contentinfo"]',
+  ) as NodeListOf<HTMLDivElement>;
+
+  divs.forEach((div) => {
+    const inputAnimation = div.querySelector(
+      ".input-animation",
+    ) as HTMLInputElement;
+
+    const divAnimation = div.querySelector(".div-animation") as HTMLDivElement;
+
+    let focused = false;
+    let position = { x: 0, y: 0 };
+
+    div.addEventListener("mousemove", (e: MouseEvent) => {
+      if (focused) return;
+      const rect = div.getBoundingClientRect();
+      position = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      };
+
+      if (inputAnimation) {
+        inputAnimation.style.webkitMaskImage = `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`;
+      }
+
+      if (divAnimation) {
+        divAnimation.style.background = `radial-gradient(600px at ${position.x}px ${position.y}px, rgba(220, 197, 58, 0.07), transparent 60%)`;
+      }
+    });
+
+    div.addEventListener("focus", () => {
+      focused = true;
+      if (inputAnimation) inputAnimation.style.opacity = "1";
+      if (divAnimation) divAnimation.style.opacity = "1";
+    });
+
+    div.addEventListener("blur", () => {
+      focused = false;
+      if (inputAnimation) inputAnimation.style.opacity = "0";
+      if (divAnimation) divAnimation.style.opacity = "0";
+    });
+
+    div.addEventListener("mouseenter", () => {
+      if (inputAnimation) inputAnimation.style.opacity = "1";
+      if (divAnimation) divAnimation.style.opacity = "1";
+    });
+
+    div.addEventListener("mouseleave", () => {
+      if (inputAnimation) inputAnimation.style.opacity = "0";
+      if (divAnimation) divAnimation.style.opacity = "0";
+    });
+  });
+</script>

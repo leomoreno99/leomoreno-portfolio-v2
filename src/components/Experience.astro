@@ -1,0 +1,103 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+import Subtitle from "./Subtitle.astro";
+
+const EXPERIENCE = [
+  {
+    date: "oct. 2023 - actualidad",
+    title: "Desarrollador de software Junior",
+    company: "Tsoft",
+    skills: ["React", "TypeScript", "Tailwind", "Java", "Spring Boot", "JSF", "JBoss", "RichFaces"],
+    description: `
+  <ul class="list-disc list-inside space-y-2">
+    <li>
+      <strong>Migración de una aplicación web construida en Perl:</strong> 
+      Siendo parte de un equipo, me encargué de analizar el código para 
+      separar las responsabilidades en <strong>Front-end</strong> y <strong>Back-end</strong>, 
+      crear <em>endpoints</em> e implementarlos desde el Front-end, además de realizar la 
+      maquetación. La migración se llevó a cabo utilizando tecnologías como 
+      <em>React</em>, <em>TypeScript</em>, <em>Tailwind</em>, <em>Vite</em>, <em>Java</em>, 
+      <em>SpringBoot</em>, entre otras.
+    </li>
+    <li>
+      <strong>Participación en el desarrollo integral de un sistema especializado en gestión contable</strong> 
+      para una organización de gran envergadura: El sistema incluye funcionalidades como 
+      <strong>registro y seguimiento de depósitos, retiros</strong>, transacciones con 
+      instituciones financieras, entre otros aspectos críticos. La implementación se realizó 
+      empleando tecnologías como <em>Java</em>, <em>JSF</em>, <em>JBoss</em> y <em>RichFaces</em>, 
+      garantizando una solución robusta y escalable.
+    </li>
+    <li>
+      <strong>Construcción de una solución de software para procesamiento de datos:</strong> 
+      Enfocada en la conversión de archivos <code>pcap</code> a formatos <code>txt</code> y 
+      <code>csv</code>, optimizando así el manejo de información capturada en redes.
+    </li>
+  </ul>
+`,
+  },
+  {
+    date: "may. 2023 - feb. 2024",
+    title: "QA Automation Junior",
+    company: "Tsoft",
+    skills: [
+      "Java",
+      "Selenium",
+      "Appium",
+      "Cucumber",
+      "JUnit",
+      "Postman",
+      "Maven",
+      "Gradle",
+      "Kobiton",
+      "BrowserStack",
+      "Appium",
+    ],
+    description: `<div>
+      <p><strong>Construcción de Framework para testing:</strong></p>
+      <ul class="list-disc list-inside">
+        <li>Estructuración de directorios y entornos.</li>
+        <li>Manejo de herramientas de construcción como <em>Maven</em> o <em>Gradle</em> y librerías.</li>
+        <li>Implementación de patrones de pruebas como <em>Page Object Model</em> y <em>Screenplay</em>.</li>
+        <li>Desarrollo de automatizaciones en <strong>Java</strong> con <em>Selenium</em>, <em>JUnit</em>, <em>Cucumber</em>, <em>Gherkin</em>, etc.</li>
+        <li>Pruebas móviles con <em>Appium</em>, <em>BrowserStack</em>, <em>Kobiton</em>, tanto en entornos locales como remotos.</li>
+        <li>Testing de API's utilizando herramientas como <em>Postman</em>, <em>UFT</em> y <em>Appium Inspector</em>.</li>
+      </ul>
+    </div>`,
+  },
+  {
+    date: "jul. 2022 - abr. 2023",
+    title: "QA Automation Trainee",
+    company: "Tsoft",
+    skills: [
+      "Java",
+      "Selenium",
+      "Appium",
+      "Cucumber",
+      "Gherkin",
+      "JUnit",
+      "XPath",
+    ],
+    description:
+      "Desarrollo de automatizaciones de pruebas en Java con Selenium, Cucumber, etc...",
+  },
+  {
+    date: "feb. 2018 - nov. 2020",
+    title: "Diseñador Gráfico Freelance",
+    company: "Freelance",
+    skills: ["Adobe Photoshop", "Adobe Illustrator"],
+    description:
+      "Me desarrollé haciendo trabajos de diseño gráfico tales como: Diseño de logos e identidad de marca, tarjetas de visita, invitaciones, banners, flyers, etc.",
+  },
+];
+---
+
+<Subtitle>Experiencia</Subtitle>
+<ol class="relative lg:max-w-4xl">
+  {
+    EXPERIENCE.map((experience) => (
+      <li>
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

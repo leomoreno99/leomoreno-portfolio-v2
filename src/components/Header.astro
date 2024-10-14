@@ -1,0 +1,37 @@
+---
+const navItems = [
+  {
+    title: "Inicio",
+    label: "inicio",
+    url: "/#inicio",
+  },
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+];
+---
+
+<header class="lg:max-w-[1200px] md:max-w-2xl mx-auto container h-[100px] flex items-center justify-between">
+  <nav class="flex justify-between items-center w-full">
+    {
+      navItems.map((item) => (
+        <a class="transition-transform duration-200 p-4 transform hover:scale-110 text-base" href={item.url} aria-label={item.label}>
+          {item.title.toUpperCase()}
+        </a>
+      ))
+    }
+  </nav>
+</header>

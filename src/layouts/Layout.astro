@@ -1,28 +1,39 @@
 ---
+import "@fontsource-variable/manrope";
+import Header from "../components/Header.astro";
+import AnimatedBackground from "../components/AnimatedBackground.astro";
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="relative text-white">
+		<Header />
+		<AnimatedBackground />
+		<div
+			class="-z-50 absolute bottom-0 left-0 right-0 top-[100lvh] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+		>
+		</div>
 	</body>
+	<slot />
 </html>
+
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
+		/* --accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
 		--accent-dark: 49, 10, 101;
 		--accent-gradient: linear-gradient(
@@ -30,21 +41,47 @@ const { title } = Astro.props;
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
 			white 60%
-		);
+		); */
+		color-scheme: light dark;
 	}
+
+	::selection {
+		background-color: #c99a02;
+		color: #fff;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: "Manrope Variable", system-ui, sans-serif;
+		scroll-behavior: smooth;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	body {
+		color: rgba(17, 17, 17, 0.9);
+		background-color: #09001a;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		overscroll-behavior: none;
+	}
+
+	.font-noto-serif {
+		font-family: "Noto Serif Display", serif;
+	}
+
+	.description-container strong {
+		--tw-text-opacity: 0.9;
+		color: rgb(229 231 235 / var(--tw-text-opacity));
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			color: rgba(255, 255, 255, 0.9);
+		}
 	}
 </style>
