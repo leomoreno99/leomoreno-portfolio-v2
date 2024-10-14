@@ -4,6 +4,7 @@ import SectionContainer from "../components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import Experience from "@/components/Experience.astro";
 import Projects from "@/components/Projects.astro";
+import Footer from "@/components/Footer.astro";
 ---
 
 <Layout
@@ -19,6 +20,9 @@ import Projects from "@/components/Projects.astro";
 		</SectionContainer>
 		<SectionContainer id="proyectos" class="">
 			<Projects />
+		</SectionContainer>
+		<SectionContainer class="md:pb-12 justify-center flex">
+			<Footer />
 		</SectionContainer>
 	</main>
 </Layout>
