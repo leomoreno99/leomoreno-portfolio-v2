@@ -24,14 +24,91 @@ const navItems = [
 ];
 ---
 
-<header class="lg:max-w-[1200px] md:max-w-2xl mx-auto container h-[100px] flex items-center justify-between">
-  <nav class="flex justify-between items-center w-full">
+<header class="fixed inset-0 w-full flex items-center justify-center z-50">
+  <nav
+    class="flex justify-between items-center w-full lg:max-w-[1200px] md:max-w-2xl"
+  >
     {
       navItems.map((item) => (
-        <a class="transition-transform duration-200 p-4 transform hover:scale-110 text-base" href={item.url} aria-label={item.label}>
+        <a
+          class="transition-transform duration-200 p-4 transform hover:scale-110 hover:text-yellow-500 text-base"
+          href={item.url}
+          aria-label={item.label}
+        >
           {item.title.toUpperCase()}
         </a>
       ))
     }
   </nav>
 </header>
+
+<style>
+  header {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    0% {
+      @apply bg-gray-800/0 h-[100px];
+    }
+    to {
+      @apply shadow-lg ring-1 backdrop-blur-lg ring-white/10 h-[50px];
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+
+    console.log(navItems)
+    console.log(sections)
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+     
+      entries.forEach((entry) => {
+        console.log(entry.target.id)
+        if (entry.isIntersecting) {
+          if(entry.target.id === "footer"){
+            return;
+          } else
+          {
+            navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("scale-110");
+              item.classList.add("text-yellow-500")
+            } else {
+              item.classList.remove("scale-110");
+              item.classList.remove("text-yellow-500")
+            }
+          });
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
+  });
+</script>

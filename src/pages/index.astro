@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SectionContainer from "../components/SectionContainer.astro";
+import Layout from "@/layouts/Layout.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import Experience from "@/components/Experience.astro";
 import Projects from "@/components/Projects.astro";
@@ -13,7 +13,7 @@ import AboutMe from "@/components/AboutMe.astro";
 	description="Leonel Moreno es un desarrollador web que trabaja en el área de la web y en la nube. Actualmente trabaja como desarrollador web en el equipo de desarrollo de una empresa de tecnología."
 >
 	<main>
-		<SectionContainer>
+		<SectionContainer id="inicio">
 			<Hero />
 		</SectionContainer>
 		<SectionContainer id="experiencia" class="lg:max-w-[1200px]">
@@ -25,7 +25,7 @@ import AboutMe from "@/components/AboutMe.astro";
 		<SectionContainer id="sobre-mi">
 			<AboutMe />
 		</SectionContainer>
-		<SectionContainer class="md:pb-12 justify-center flex">
+		<SectionContainer id="footer" class="md:pb-6 justify-center flex">
 			<Footer />
 		</SectionContainer>
 	</main>

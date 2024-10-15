@@ -6,37 +6,25 @@ const PROJECTS = [
   {
     title: "ABM Turismo",
     description:
-      "Proyecto final del curso MERN en PilarTecno, donde desarrollé el Frontend, Backend, base de datos y aplicación móvil para un sistema ABM de lugares turísticos en La Rioja.",
+      "Proyecto final del curso MERN en <strong>PilarTecno</strong>, donde desarrollé el <strong>Frontend, Backend, base de datos y aplicación móvil</strong> para un sistema ABM de lugares turísticos en La Rioja.",
     github: "https://github.com/leomoreno99/integrador-pilartecno",
     image: "/projects/abm-turismo.webp",
     tags: ["React", "React Native", "NodeJs", "ExpressJs", "MongoDB"],
+    year: "2022",
   },
   {
     title: "Tienda Repuestos",
     description:
-      "Tienda online desarrollada como trabajo final para una materia de la universidad, en la que implementamos el Frontend, Backend y base de datos utilizando arquitectura REST.",
+      "Tienda online desarrollada como trabajo final para una materia de la universidad, en la que implementamos el <strong>Frontend, Backend y base de datos</strong> utilizando arquitectura <strong>REST</strong>.",
     github: "https://github.com/leomoreno99/cucco-repuestos-frontend",
     image: "/projects/cucco-repuestos.webp",
     tags: ["React", "Styled Components", "NodeJs", "MongoDB"],
-  },
-  {
-    title: "Mini e-commerce",
-    description:
-      "Consumo una API de productos para mostrar los productos en pantalla, acceder a sus detalles, añadirlos al carrito y visualizar la lista detallada del mismo.",
-    github:
-      "https://github.com/leomoreno99/mini-ecommerce-curso-react-pilartecno",
-    link: "https://ecommerce-curso-pilartecno.netlify.app",
-    image: "/projects/mini-ecommerce.webp",
-    tags: ["React", "Material UI", "Redux", "Dexie"],
-  },
+    year: "2021",
+  }
 ];
 ---
 
 <Subtitle>Proyectos</Subtitle>
 <div class="flex gap-12 flex-wrap mx-auto">
-  {
-    PROJECTS.map((project) => (
-        <ProjectItem {...project} />
-    ))
-  }
-</di>
+  {PROJECTS.map((project) => <ProjectItem {...project} />)}
+</div>

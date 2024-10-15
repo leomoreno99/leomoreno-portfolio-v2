@@ -10,9 +10,10 @@ interface Props {
   github?: string;
   image: string;
   tags: string[];
+  year: string;
 }
 
-const { title, description, link, github, image, tags } = Astro.props;
+const { title, description, link, github, image, tags, year } = Astro.props;
 ---
 
 <div
@@ -35,11 +36,9 @@ const { title, description, link, github, image, tags } = Astro.props;
   <div class="flex flex-col justify-between z-10 sm:order-2 sm:col-span-6">
     <div>
       <h3 class="text-gray-200 font-bold">
-        {title}
+        {title}<span class="text-gray-400 font-normal text-xs"> ({year})</span>
       </h3>
-      <p class="mt-2 text-gray-400 leading-normal">
-        {description}
-      </p>
+      <p class="mt-2 text-gray-400 leading-normal [&>strong]:text-gray-300" set:html={description} />
       <div class="pt-4 flex flex-wrap gap-2 md:col-span-3 md:col-start-3">
         {tags && tags.map((tag) => <KBD>{tag}</KBD>)}
       </div>
@@ -57,7 +56,7 @@ const { title, description, link, github, image, tags } = Astro.props;
           <LinkButton href={link}>
             <GoToIcon class="size-4 stroke-white/60" />
           </LinkButton>
-          )
+        )
       }
     </div>
   </div>
