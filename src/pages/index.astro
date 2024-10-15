@@ -5,6 +5,7 @@ import Hero from "@/components/Hero.astro";
 import Experience from "@/components/Experience.astro";
 import Projects from "@/components/Projects.astro";
 import Footer from "@/components/Footer.astro";
+import AboutMe from "@/components/AboutMe.astro";
 ---
 
 <Layout
@@ -18,8 +19,11 @@ import Footer from "@/components/Footer.astro";
 		<SectionContainer id="experiencia" class="lg:max-w-[1200px]">
 			<Experience />
 		</SectionContainer>
-		<SectionContainer id="proyectos" class="">
+		<SectionContainer id="proyectos">
 			<Projects />
+		</SectionContainer>
+		<SectionContainer id="sobre-mi">
+			<AboutMe />
 		</SectionContainer>
 		<SectionContainer class="md:pb-12 justify-center flex">
 			<Footer />
