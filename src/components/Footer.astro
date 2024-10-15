@@ -4,9 +4,15 @@ import FigmaIcon from "./icons/Figma.astro";
 import TailwindIcon from "./icons/Tailwind.astro";
 ---
 
-<footer class="border border-emerald-400/80 max-w-min px-3 py-1 rounded-full select-none transition duration-300 opacity-70 hover:opacity-100">
+<footer 
+  class="select-none px-4 py-2 shadow-2xl rounded-full border border-white/15 grayscale hover:grayscale-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.2)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-no-repeat transition-[background-position_0s_ease] duration-[1500ms]"
+  style={{
+    backgroundPosition: '-100% 0, 0 0', 
+    animation: 'bgPosition 6s ease infinite',
+  }}
+>
   <div
-    class="flex justify-center items-center max-w-min gap-1 grayscale hover:grayscale-0"
+    class="flex justify-center items-center max-w-min gap-1"
   >
     <p class="inline-block whitespace-nowrap">Forjado gracias a</p>
     <FigmaIcon class="w-4 h-4" />
@@ -14,3 +20,10 @@ import TailwindIcon from "./icons/Tailwind.astro";
     <TailwindIcon class="w-5 h-5" />
   </div>
 </footer>
+
+<style>
+  @keyframes bgPosition {
+    0% { background-position: 200% 0, 0 0; }
+    100% { background-position: -100% 0, 0 0; }
+  }
+</style>
