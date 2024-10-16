@@ -26,12 +26,12 @@ const navItems = [
 
 <header class="fixed inset-0 w-full flex items-center justify-center z-50">
   <nav
-    class="flex justify-between items-center w-full lg:max-w-[1200px] md:max-w-2xl"
+    class="flex justify-between items-center w-full max-w-lg md:max-w-3xl xl:max-w-[1200px]"
   >
     {
       navItems.map((item) => (
         <a
-          class="transition-transform duration-200 p-4 transform hover:scale-110 hover:text-yellow-500 text-base"
+          class="transition-transform duration-200 p-4 transform hover:scale-110 hover:text-yellow-500 text-sm md:text-base"
           href={item.url}
           aria-label={item.label}
         >

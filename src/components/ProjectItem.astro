@@ -17,7 +17,7 @@ const { title, description, link, github, image, tags, year } = Astro.props;
 ---
 
 <div
-  class="grid gap-4 pb-1 sm:min-w-[528px] sm:max-w-[528px] sm:grid-cols-8 sm:gap-8 md:gap-4
+  class="grid md:pb-1 max-w-[528px] sm:grid-cols-8 md:gap-4
   relative rounded-md border-[1px] px-3 py-4 shadow-sm border-neutral-800"
   role="contentinfo"
   tabindex="0"
@@ -33,17 +33,17 @@ const { title, description, link, github, image, tags, year } = Astro.props;
     class="div-animation pointer-events-none absolute -inset-px rounded-md opacity-1 transition duration-300"
   >
   </div>
-  <div class="flex flex-col justify-between z-10 sm:order-2 sm:col-span-6">
+  <div class="flex flex-col justify-between z-10 md:order-3 sm:col-span-6">
     <div>
       <h3 class="text-gray-200 font-bold">
         {title}<span class="text-gray-400 font-normal text-xs"> ({year})</span>
       </h3>
-      <p class="mt-2 text-gray-400 leading-normal [&>strong]:text-gray-300" set:html={description} />
+      <p class="mt-2 text-sm xl:text-base text-gray-400 leading-normal [&>strong]:text-gray-300" set:html={description} />
       <div class="pt-4 flex flex-wrap gap-2 md:col-span-3 md:col-start-3">
         {tags && tags.map((tag) => <KBD>{tag}</KBD>)}
       </div>
     </div>
-    <div class="nav flex gap-2 my-2 justify-end" data-orientation="horizontal">
+    <div class="nav flex gap-2 my-2 justify-start md:justify-end order-last md:order-2" data-orientation="horizontal">
       {
         github && (
           <LinkButton href={github}>
@@ -63,7 +63,7 @@ const { title, description, link, github, image, tags, year } = Astro.props;
   <img
     src={image}
     alt={title}
-    class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 md:w-[120px] sm:order-1 sm:col-span-2 sm:translate-y-1"
+    class="rounded border-2 border-slate-200/10 transition group-hover:border-slate-200/30 w-[200px] md:w-[120px] md:order-1 sm:col-span-2 sm:translate-y-1"
   />
 </div>
 

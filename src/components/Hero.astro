@@ -23,30 +23,27 @@ const SOCIAL_NETWORKS = [
 ];
 ---
 
-<div class="flex flex-col justify-center h-[100vh] [&>h2]:text-[200px]">
-  <h2 class="flex font-medium tracking-tighter leading-none -my-5">
+<div class="flex flex-col justify-center h-[100vh] [&>h2]:text-[70px] md:[&>h2]:text-[130px] xl:[&>h2]:text-[200px] md:[&>h2]:-my-4 xl:[&>h2]:-my-5">
+  <h2 class="flex font-medium tracking-tighter leading-none">
     Leonel
   </h2>
   <h1
-    class="flex justify-end text-[52px] text-yellow-500 font-noto-serif font-medium italic -my-3"
+    class="flex justify-end text-xl md:text-[36px] xl:text-[52px] text-yellow-500 font-noto-serif font-medium italic -my-3"
   >
     Software Developer
   </h1>
   <h2
-    class="inline-flex justify-end font-medium tracking-tighter pointer-events-none leading-none -my-5"
+    class="inline-flex justify-end font-medium tracking-tighter pointer-events-none leading-none"
   >
     Moreno
   </h2>
-  <div class="flex gap-2 justify-end mt-12">
+  <div class="flex gap-2 justify-end mt-6 md:mt-12">
     <Button href="mailto:leomoreno330@gmail.com"> CONTACTAME </Button>
     <Button href="https://www.linkedin.com/in/leomoreno99/"> LINKEDIN </Button>
   </div>
 </div>
-<div class="-mt-[72px]">
-  <SocialButton name="DESCARGA MI CV" href="/cv-leomoreno.pdf" />
-</div>
-<div class="fixed bottom-12 left-12">
-  <nav>
+<div class="md:-mt-[69px] xl:-mt-[72px]">
+  <nav class="absolute [top:calc(100vh-160px)] md:[top:calc(100vh-190px)] left-6 md:left-12 flex items-end gap-12">
     <ul class="[&>li]:pt-3">
      {
        SOCIAL_NETWORKS.map((social) => (
@@ -56,5 +53,9 @@ const SOCIAL_NETWORKS = [
        ))
      }
     </ul>
+    <SocialButton name="DESCARGA MI CV" href="/cv-leomoreno.pdf" />
   </nav>
 </div>
+<!-- <div class="fixed bottom-12 left-12">
+  
+</div> -->
