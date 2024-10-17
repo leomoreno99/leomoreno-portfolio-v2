@@ -23,10 +23,10 @@ const SOCIAL_NETWORKS = [
 ];
 ---
 
-<div class="flex flex-col justify-center h-[100vh] [&>h2]:text-[70px] md:[&>h2]:text-[130px] xl:[&>h2]:text-[200px] md:[&>h2]:-my-4 xl:[&>h2]:-my-5">
-  <h2 class="flex font-medium tracking-tighter leading-none">
-    Leonel
-  </h2>
+<div
+  class="z-50 flex flex-col justify-center h-svh max-h-svh [&>h2]:text-[70px] md:[&>h2]:text-[130px] xl:[&>h2]:text-[200px] md:[&>h2]:-my-4 xl:[&>h2]:-my-5"
+>
+  <h2 class="flex font-medium tracking-tighter leading-none">Leonel</h2>
   <h1
     class="flex justify-end text-xl md:text-[36px] xl:text-[52px] text-yellow-500 font-noto-serif font-medium italic -my-3"
   >
@@ -43,15 +43,17 @@ const SOCIAL_NETWORKS = [
   </div>
 </div>
 <div class="md:-mt-[69px] xl:-mt-[72px]">
-  <nav class="absolute [top:calc(100vh-160px)] md:[top:calc(100vh-190px)] left-6 md:left-12 flex items-end gap-12">
+  <nav
+    class="absolute [top:calc(100svh-170px)] md:[top:calc(100vh-190px)] left-6 md:left-12 flex items-end gap-12"
+  >
     <ul class="[&>li]:pt-3">
-     {
-       SOCIAL_NETWORKS.map((social) => (
-         <li>
-           <SocialButton {...social} />
-         </li>
-       ))
-     }
+      {
+        SOCIAL_NETWORKS.map((social) => (
+          <li>
+            <SocialButton {...social} />
+          </li>
+        ))
+      }
     </ul>
     <SocialButton name="DESCARGA MI CV" href="/cv-leomoreno.pdf" />
   </nav>
