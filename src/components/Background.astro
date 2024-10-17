@@ -1,0 +1,59 @@
+<div
+  id="animate-bkg"
+  class="absolute overflow-hidden -z-10 pointer-events-none bottom-0 left-0 right-0 top-0"
+>
+</div>
+
+<script>
+  import {
+    EffectComposer,
+    RenderPass,
+    KawaseBlurPass,
+    KernelSize,
+  } from "postprocessing";
+  import * as THREE from "three";
+
+  const animateBkg = document.querySelector<HTMLDivElement>("#animate-bkg")!;
+
+  const renderer = new THREE.WebGLRenderer({
+    powerPreference: "high-performance",
+    antialias: true,
+    stencil: false,
+    depth: false,
+  });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  animateBkg.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    50,
+  );
+  camera.position.z = 10;
+
+  const circleGeometry = new THREE.CircleGeometry(2, 64);
+  const material = new THREE.MeshBasicMaterial({
+    color: 0x1234fff,
+  });
+  const circle = new THREE.Mesh(circleGeometry, material);
+  scene.add(circle);
+
+  const composer = new EffectComposer(renderer);
+  composer.addPass(new RenderPass(scene, camera));
+
+  const blurPass = new KawaseBlurPass({
+    resolutionY: 480,
+    kernelSize: KernelSize.HUGE,
+  });
+  composer.addPass(blurPass);
+
+  requestAnimationFrame(function render() {
+    requestAnimationFrame(render);
+    circle.position.x += 0.01;
+    composer.render();
+  });
+</script>
