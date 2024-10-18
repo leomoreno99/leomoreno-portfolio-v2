@@ -3,7 +3,6 @@ import "@fontsource-variable/manrope";
 import Header from "@/components/Header.astro";
 import AnimatedBackground from "../components/AnimatedBackground.astro";
 import ClientRouter from "astro/components/ClientRouter.astro";
-import Background from "@/components/Background.astro";
 import Footer from "@/components/Footer.astro";
 interface Props {
 	title: string;
@@ -26,7 +25,7 @@ const { description, title } = Astro.props;
 	</head>
 	<body class="relative text-white">
 		<Header />
-		<Background />
+		<AnimatedBackground />
 		<div
 			class="-z-50 absolute bottom-0 left-0 right-0 top-[100svh] bg-[#0A0140] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
 		>
@@ -38,15 +37,6 @@ const { description, title } = Astro.props;
 
 <style is:global>
 	:root {
-		/* --accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		); */
 		color-scheme: light dark;
 	}
 

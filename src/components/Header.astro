@@ -6,6 +6,11 @@ const navItems = [
     url: "/#inicio",
   },
   {
+    title: "Sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+  {
     title: "Experiencia",
     label: "experiencia",
     url: "/#experiencia",
@@ -15,11 +20,6 @@ const navItems = [
     title: "Proyectos",
     label: "proyectos",
     url: "/#proyectos",
-  },
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
   },
 ];
 ---
@@ -64,13 +64,10 @@ const navItems = [
     const sections = document.querySelectorAll("section");
     const navItems = document.querySelectorAll("header nav a");
 
-    console.log(navItems)
-    console.log(sections)
-
     const callback = (entries: IntersectionObserverEntry[]) => {
      
       entries.forEach((entry) => {
-        console.log(entry.target.id)
+        console.log(entry)
         if (entry.isIntersecting) {
           if(entry.target.id === "footer"){
             return;

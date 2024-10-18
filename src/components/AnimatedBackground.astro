@@ -1,262 +1,184 @@
 <div
-			class="opacity-20 -z-[5] mix-blend-multiply bg-repeat-round absolute pointer-events-none bottom-0 left-0 right-0 top-0 max-h-lvh bg-[url('/public/noise.webp')] bg-[length:18%_18%]"
-		>
-		</div>
-<div
-  class="gradient-bg absolute -z-10 pointer-events-none bottom-0 left-0 right-0 top-0"
+  id="animate-bkg"
+  class="absolute overflow-hidden -z-20 pointer-events-none bottom-0 left-0 right-0 top-0 h-svh bg-gradient-to-br from-purple-700 to-blue-900 mix-blend-color-dodge"
 >
-  <div class="general-container">
-    <div class="gradients-container">
-      <div class="g1"></div>
-      <div class="g2"></div>
-      <div class="g3"></div>
-      <div class="g4"></div>
-      <div class="g5"></div>
-      <div class="interactive"></div>
-    </div>
+  <div
+    class="opacity-5 -z-0 mix-blend-multiply bg-repeat-round absolute pointer-events-none bottom-0 left-0 right-0 top-0 h-svh bg-[url('/public/noise.webp')] bg-[length:18%_18%]"
+  >
   </div>
 </div>
 
 <style>
-  .text-container {
-    z-index: 100;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
-    font-size: 96px;
-    color: white;
-    opacity: 0.8;
-    user-select: none;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  :root {
-    --color-bg1: rgb(108, 0, 162);
-    --color-bg2: rgb(0, 17, 82);
-    --color1: 18, 113, 255;
-    --color2: 221, 74, 255;
-    --color3: 100, 220, 255;
-    --color4: 200, 50, 50;
-    --color5: 180, 180, 50;
-    --color-interactive: 140, 100, 255;
-    --circle-size: 80%;
-    --blending: hard-light;
-  }
-
-  @keyframes moveInCircle {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(180deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes moveVertical {
-    0% {
-      transform: translateY(-50%);
-    }
-    50% {
-      transform: translateY(50%);
-    }
-    100% {
-      transform: translateY(-50%);
-    }
-  }
-
-  @keyframes moveHorizontal {
-    0% {
-      transform: translateX(-50%) translateY(-10%);
-    }
-    50% {
-      transform: translateX(50%) translateY(10%);
-    }
-    100% {
-      transform: translateX(-50%) translateY(-10%);
-    }
-  }
-
-  .gradient-bg {
-    height: 100vh;
-    position: absolute;
-    overflow: hidden;
-    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
-    top: 0;
-    left: 0;
-
-    svg {
-      display: none;
-    }
-
-    .general-container {
-      filter: url(#noise-filter);
-      width: 100%;
-      height: 100%;
-    }
-
-    .gradients-container {
-      filter: url(#goo) blur(40px);
-
-      width: 100%;
-      height: 100%;
-      background-color: rgb(32, 32, 32);
-    }
-
-    .g1 {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color1), 0.8) 0,
-          rgba(var(--color1), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: var(--circle-size);
-      height: var(--circle-size);
-      top: calc(50% - var(--circle-size) / 2);
-      left: calc(50% - var(--circle-size) / 2);
-
-      transform-origin: center center;
-      animation: moveVertical 30s ease infinite;
-
-      opacity: 1;
-    }
-
-    .g2 {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color2), 0.8) 0,
-          rgba(var(--color2), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: var(--circle-size);
-      height: var(--circle-size);
-      top: calc(50% - var(--circle-size) / 2);
-      left: calc(50% - var(--circle-size) / 2);
-
-      transform-origin: calc(50% - 400px);
-      animation: moveInCircle 20s reverse infinite;
-
-      opacity: 1;
-    }
-
-    .g3 {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color3), 0.8) 0,
-          rgba(var(--color3), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: var(--circle-size);
-      height: var(--circle-size);
-      top: calc(50% - var(--circle-size) / 2 + 200px);
-      left: calc(50% - var(--circle-size) / 2 - 500px);
-
-      transform-origin: calc(50% + 400px);
-      animation: moveInCircle 40s linear infinite;
-
-      opacity: 1;
-    }
-
-    .g4 {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color4), 0.8) 0,
-          rgba(var(--color4), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: var(--circle-size);
-      height: var(--circle-size);
-      top: calc(50% - var(--circle-size) / 2);
-      left: calc(50% - var(--circle-size) / 2);
-
-      transform-origin: calc(50% - 200px);
-      animation: moveHorizontal 40s ease infinite;
-
-      opacity: 0.7;
-    }
-
-    .g5 {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color5), 0.8) 0,
-          rgba(var(--color5), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: calc(var(--circle-size) * 2);
-      height: calc(var(--circle-size) * 2);
-      top: calc(50% - var(--circle-size));
-      left: calc(50% - var(--circle-size));
-
-      transform-origin: calc(50% - 800px) calc(50% + 200px);
-      animation: moveInCircle 20s ease infinite;
-
-      opacity: 1;
-    }
-
-    .interactive {
-      position: absolute;
-      background: radial-gradient(
-          circle at center,
-          rgba(var(--color-interactive), 0.8) 0,
-          rgba(var(--color-interactive), 0) 50%
-        )
-        no-repeat;
-      mix-blend-mode: var(--blending);
-
-      width: 100%;
-      height: 100%;
-      top: -50%;
-      left: -50%;
-
-      opacity: 0.7;
-    }
+  #animate-bkg {
+    filter: hue-rotate(356deg);
   }
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const interBubble = document.querySelector<HTMLDivElement>(".interactive")!;
-    let curX = 0;
-    let curY = 0;
-    let tgX = 0;
-    let tgY = 0;
+  import {
+    EffectComposer,
+    RenderPass,
+    KawaseBlurPass,
+    KernelSize,
+  } from "postprocessing";
+  import * as THREE from "three";
 
-    function move() {
-      curX += (tgX - curX) / 20;
-      curY += (tgY - curY) / 20;
-      interBubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-      requestAnimationFrame(() => {
-        move();
-      });
-    }
+  const animateBkg = document.querySelector<HTMLDivElement>("#animate-bkg")!;
+  const renderer = new THREE.WebGLRenderer({
+    powerPreference: "high-performance",
+    antialias: true,
+    stencil: false,
+    depth: false,
+  });
 
-    window.addEventListener("mousemove", (event) => {
-      tgX = event.clientX;
-      tgY = event.clientY;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setClearColor(0x000000, 0);
+  animateBkg.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    50,
+  );
+  camera.position.z = 10;
+
+  const colors = [
+    new THREE.Color(221 / 255, 74 / 255, 255 / 255),
+    new THREE.Color(255 / 255, 74 / 255, 255 / 255),
+    new THREE.Color(255 / 255, 255 / 255, 255 / 255),
+    new THREE.Color(1 / 255, 20 / 255, 255 / 255),
+    new THREE.Color(1 / 255, 20 / 255, 255 / 255),
+  ];
+
+  const circles: THREE.Mesh[] = [];
+  const speed = 0.02;
+  const screenBounds = {
+    x: (window.innerWidth / window.innerHeight) * 4,
+    y: 4,
+  };
+  let lastScrollY = 0;
+  let scrollDelta = 0;
+  const mouse = new THREE.Vector3(0, 0, 0);
+
+  // Crear los círculos
+  colors.forEach((color) => {
+    const circleGeometry = new THREE.CircleGeometry(
+      window.innerHeight / 450,
+      64,
+    );
+    const material = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.8,
+    });
+    const circle = new THREE.Mesh(circleGeometry, material);
+
+    circle.position.set(
+      Math.random() * screenBounds.x * 2 - screenBounds.x,
+      Math.random() * screenBounds.y * 2 - screenBounds.y,
+      Math.random() * 5,
+    );
+
+    circle.userData.velocity = new THREE.Vector2(
+      (Math.random() - 0.1) * speed,
+      (Math.random() - 0.1) * speed,
+    );
+
+    scene.add(circle);
+    circles.push(circle);
+  });
+
+  const composer = new EffectComposer(renderer);
+  composer.addPass(new RenderPass(scene, camera));
+
+  const createBlurPass = (kernelSize: KernelSize, scale: number) =>
+    new KawaseBlurPass({
+      resolutionY: 480,
+      kernelSize,
+      resolutionScale: scale,
     });
 
-    move();
+  const blurPasses = [];
+  const contBlurPasses = window.innerWidth >= 768 ? 2 : 1;
+
+  for (let i = 0; i < contBlurPasses; i++) {
+    blurPasses.push(createBlurPass(KernelSize.HUGE, 0.1));
+  }
+  blurPasses.forEach((pass) => composer.addPass(pass));
+
+  const updateEventListeners = () => {
+    if (window.innerWidth >= 768) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("scroll", handleScroll);
+    } else {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.addEventListener("scroll", handleScroll);
+    }
+  };
+
+  const handleMouseMove = (event: MouseEvent) => {
+    const x = (event.clientX / window.innerWidth) * 2 - 1;
+    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+    mouse.set(x * screenBounds.x, y * screenBounds.y, 0);
+  };
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+    scrollDelta = scrollY - lastScrollY;
+    lastScrollY = scrollY;
+  };
+
+  window.addEventListener("resize", updateEventListeners);
+  updateEventListeners();
+
+  requestAnimationFrame(function render() {
+    requestAnimationFrame(render);
+
+    circles.forEach((circle, index) => {
+      if (window.innerWidth >= 768) {
+        const direction = new THREE.Vector2(
+          mouse.x - circle.position.x,
+          mouse.y - circle.position.y,
+        );
+
+        const distance = direction.length();
+
+        if (distance < 2) {
+          direction.normalize();
+          circle.userData.velocity.add(direction.multiplyScalar(0.004));
+        }
+      }
+      circle.userData.velocity.y += scrollDelta * 0.0002;
+
+      if (
+        Math.abs(circle.userData.velocity.x) > 0.007 ||
+        Math.abs(circle.userData.velocity.y) > 0.007
+      ) {
+        circle.userData.velocity.multiplyScalar(0.99);
+      }
+
+      circle.position.x += circle.userData.velocity.x;
+      circle.position.y += circle.userData.velocity.y;
+
+      if (
+        circle.position.x > screenBounds.x ||
+        circle.position.x < -screenBounds.x
+      ) {
+        circle.userData.velocity.x *= -1;
+      }
+      if (
+        circle.position.y > screenBounds.y ||
+        circle.position.y < -screenBounds.y
+      ) {
+        circle.userData.velocity.y *= -1;
+      }
+
+      scrollDelta *= 0.9;
+    });
+
+    composer.render();
   });
 </script>
