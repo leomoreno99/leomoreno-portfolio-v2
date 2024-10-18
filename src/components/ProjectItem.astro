@@ -1,6 +1,6 @@
 ---
 import KBD from "@components/KBD.astro";
-import LinkButton from "@components/LinkButton.astro";
+import IconButton from "@components/IconButton.astro";
 import GitHubIcon from "@icons/GitHub.astro";
 import GoToIcon from "@icons/GoTo.astro";
 interface Props {
@@ -26,6 +26,7 @@ const { title, description, link, github, image, tags, year } = Astro.props;
 >
   <input
     aria-hidden="true"
+    disabled
     class="input-animation pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-[0.310rem] border transition-opacity duration-500 placeholder:select-none border-yellow-100/50"
     style="background-color: transparent; opacity: 0;"
   />
@@ -46,16 +47,16 @@ const { title, description, link, github, image, tags, year } = Astro.props;
     <div class="nav flex gap-2 my-2 justify-start md:justify-end order-last md:order-2" data-orientation="horizontal">
       {
         github && (
-          <LinkButton href={github}>
+          <IconButton href={github} ariaLabel="Link al GitHub del proyecto">
             <GitHubIcon class="size-4 stroke-white/60" />
-          </LinkButton>
+          </IconButton>
         )
       }
       {
         link && (
-          <LinkButton href={link}>
+          <IconButton href={link} ariaLabel="Link al sitio del proyecto">
             <GoToIcon class="size-4 stroke-white/60" />
-          </LinkButton>
+          </IconButton>
         )
       }
     </div>
