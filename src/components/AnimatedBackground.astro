@@ -21,10 +21,10 @@
     KawaseBlurPass,
     KernelSize,
   } from "postprocessing";
-  import * as THREE from "three";
+  import { WebGLRenderer, Scene, PerspectiveCamera, Color, Mesh, CircleGeometry, MeshBasicMaterial, Vector2, Vector3 } from "three";
 
   const animateBkg = document.querySelector<HTMLDivElement>("#animate-bkg")!;
-  const renderer = new THREE.WebGLRenderer({
+  const renderer = new WebGLRenderer({
     powerPreference: "high-performance",
     antialias: true,
     stencil: false,
@@ -36,8 +36,8 @@
   renderer.setClearColor(0x000000, 0);
   animateBkg.appendChild(renderer.domElement);
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
+  const scene = new Scene();
+  const camera = new PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
     0.1,
@@ -46,14 +46,14 @@
   camera.position.z = 10;
 
   const colors = [
-    new THREE.Color(221 / 255, 74 / 255, 255 / 255),
-    new THREE.Color(255 / 255, 74 / 255, 255 / 255),
-    new THREE.Color(255 / 255, 255 / 255, 255 / 255),
-    new THREE.Color(1 / 255, 20 / 255, 255 / 255),
-    new THREE.Color(1 / 255, 20 / 255, 255 / 255),
+    new Color(221 / 255, 74 / 255, 255 / 255),
+    new Color(255 / 255, 74 / 255, 255 / 255),
+    new Color(255 / 255, 255 / 255, 255 / 255),
+    new Color(1 / 255, 20 / 255, 255 / 255),
+    new Color(1 / 255, 20 / 255, 255 / 255),
   ];
 
-  const circles: THREE.Mesh[] = [];
+  const circles: Mesh[] = [];
   const speed = 0.02;
   const screenBounds = {
     x: (window.innerWidth / window.innerHeight) * 4,
@@ -61,19 +61,19 @@
   };
   let lastScrollY = 0;
   let scrollDelta = 0;
-  const mouse = new THREE.Vector3(0, 0, 0);
+  const mouse = new Vector3(0, 0, 0);
 
   colors.forEach((color) => {
-    const circleGeometry = new THREE.CircleGeometry(
+    const circleGeometry = new CircleGeometry(
       window.innerHeight / 450,
       64,
     );
-    const material = new THREE.MeshBasicMaterial({
+    const material = new MeshBasicMaterial({
       color,
       transparent: true,
       opacity: 0.8,
     });
-    const circle = new THREE.Mesh(circleGeometry, material);
+    const circle = new Mesh(circleGeometry, material);
 
     circle.position.set(
       Math.random() * screenBounds.x * 2 - screenBounds.x,
@@ -81,7 +81,7 @@
       Math.random() * 5,
     );
 
-    circle.userData.velocity = new THREE.Vector2(
+    circle.userData.velocity = new Vector2(
       (Math.random() - 0.1) * speed,
       (Math.random() - 0.1) * speed,
     );
@@ -138,7 +138,7 @@
 
     circles.forEach((circle, index) => {
       if (window.innerWidth >= 768) {
-        const direction = new THREE.Vector2(
+        const direction = new Vector2(
           mouse.x - circle.position.x,
           mouse.y - circle.position.y,
         );

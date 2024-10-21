@@ -67,7 +67,6 @@ const navItems = [
     const callback = (entries: IntersectionObserverEntry[]) => {
      
       entries.forEach((entry) => {
-        console.log(entry)
         if (entry.isIntersecting) {
           if(entry.target.id === "footer"){
             return;
