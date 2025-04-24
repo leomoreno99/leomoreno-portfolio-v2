@@ -9,7 +9,7 @@ import Subtitle from "@components/Subtitle.astro";
 >
   <div class="text-sm xl:text-base [&>p]:mb-4 text-pretty [&>p>strong]:text-gray-300">
     <p>
-      <strong>Me llamo Leo, tengo 25 años, Soy estudiante avanzado de Ingeniería en Sistemas 🤓</strong> 
+      <strong>Me llamo Leo, tengo <span id="age"></span> años, Soy estudiante avanzado de Ingeniería en Sistemas 🤓</strong> 
       y vivo en <strong>La Rioja, Argentina 🇦🇷</strong>. Cuando era chico no tuve mucha 
       tecnología cerca, por lo que la primera vez que vi una computadora 💻, algo hizo <q><em>clic</em></q> en mí. 
       Cada vez que navegaba y me cruzaba con páginas increíbles 🌐, pensaba: 
@@ -33,3 +33,21 @@ import Subtitle from "@components/Subtitle.astro";
   <img width="450px" height="605px" src="/me.webp" alt="Foto de Leo Moreno" class="object-cover w-52 md:w-64 h-full p-1 transition-all rotate-2 hover:rotate-6 lg:p-2 lg:w-64 rounded-2xl " style="object-position: 50% 50%">
 </article>
 </div>
+
+<script>
+  const birthDate = new Date('1999-03-19')
+  const today = new Date()
+  let age = today.getFullYear() - birthDate.getFullYear()
+  const monthDiff = today.getMonth() - birthDate.getMonth()
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const ageElement = document.querySelector('#age')
+    if (ageElement) {
+      ageElement.textContent = age.toString()
+    }
+  })
+</script>
