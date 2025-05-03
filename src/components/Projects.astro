@@ -1,30 +1,36 @@
 ---
 import Subtitle from "@components/Subtitle.astro";
-import ProjectItem from "@components/ProjectItem.astro";
+// import ProjectItem from "@components/ProjectItem.astro";
 
-const PROJECTS = [
-  {
-    title: "ABM Turismo",
-    description:
-      "Proyecto final del curso MERN en <strong>PilarTecno</strong>, donde desarrollé el <strong>Frontend, Backend, base de datos y aplicación móvil</strong> para un sistema ABM de lugares turísticos en La Rioja.",
-    github: "https://github.com/leomoreno99/integrador-pilartecno",
-    image: "/projects/abm-turismo.webp",
-    tags: ["React", "React Native", "NodeJs", "ExpressJs", "MongoDB"],
-    year: "2022",
-  },
-  {
-    title: "Tienda Repuestos",
-    description:
-      "Desarrollo de una tienda online como proyecto final para una asignatura universitaria, en la que implementamos el <strong>Frontend, Backend y base de datos</strong> utilizando arquitectura <strong>REST</strong>.",
-    github: "https://github.com/leomoreno99/cucco-repuestos-frontend",
-    image: "/projects/cucco-repuestos.webp",
-    tags: ["React", "Styled Components", "NodeJs", "MongoDB"],
-    year: "2021",
-  }
-];
+// const PROJECTS = [
+//   {
+//     title: "ABM Turismo",
+//     description:
+//       "Proyecto final del curso MERN en <strong>PilarTecno</strong>, donde desarrollé el <strong>Frontend, Backend, base de datos y aplicación móvil</strong> para un sistema ABM de lugares turísticos en La Rioja.",
+//     github: "https://github.com/leomoreno99/integrador-pilartecno",
+//     image: "/projects/abm-turismo.webp",
+//     tags: ["React", "React Native", "NodeJs", "ExpressJs", "MongoDB"],
+//     year: "2022",
+//   },
+//   {
+//     title: "Tienda Repuestos",
+//     description:
+//       "Desarrollo de una tienda online como proyecto final para una asignatura universitaria, en la que implementamos el <strong>Frontend, Backend y base de datos</strong> utilizando arquitectura <strong>REST</strong>.",
+//     github: "https://github.com/leomoreno99/cucco-repuestos-frontend",
+//     image: "/projects/cucco-repuestos.webp",
+//     tags: ["React", "Styled Components", "NodeJs", "MongoDB"],
+//     year: "2021",
+//   },
+// ];
 ---
 
 <Subtitle>Proyectos</Subtitle>
-<div class="flex gap-6 md:gap-12 flex-wrap mx-auto">
-  {PROJECTS.map((project) => <ProjectItem {...project} />)}
+<!-- <div class="flex gap-6 md:gap-12 flex-wrap mx-auto"> -->
+<div class="flex gap-6 md:gap-12 flex-wrap justify-center mx-auto">
+  <!-- {PROJECTS.map((project) => <ProjectItem {...project} />)} -->
+  <h3
+    class="text-5xl md:text-6xl xl:text-7xl text-yellow-100/20 font-noto-serif italic font-medium mb-9"
+  >
+    Proyectos en desarrollo...
+  </h3>
 </div>
