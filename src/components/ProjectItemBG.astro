@@ -1,0 +1,151 @@
+---
+import KBD from "@components/KBD.astro";
+import IconButton from "@components/IconButton.astro";
+import GitHubIcon from "@icons/GitHub.astro";
+import GoToIcon from "@icons/GoTo.astro";
+interface Props {
+  title: string;
+  description: string;
+  link?: string;
+  github?: string;
+  image: string;
+  tags: string[];
+  year?: string;
+  bgColor?: string;
+}
+
+const { title, description, link, github, image, tags, year, bgColor = "rgba(220, 197, 58, 0.07)" } =
+  Astro.props;
+---
+
+<div
+  class="relative max-w-[320px] h-[480px] rounded-lg border-[1px] shadow-sm border-neutral-800 overflow-hidden bg-neutral-900"
+  role="contentinfo"
+  tabindex="0"
+  aria-label="Project"
+  data-title={title}
+  data-bg-color={bgColor}
+>
+  <!-- Background image covering full card -->
+  <div class="absolute inset-0">
+    <img src={image} alt={title} class="w-full h-full object-cover" />
+    <!-- Gradient overlay for content readability -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"
+    >
+    </div>
+  </div>
+
+  <input
+    aria-hidden="true"
+    disabled
+    class="input-animation pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-lg border transition-opacity duration-500 placeholder:select-none border-yellow-100/50"
+    style="background-color: transparent; opacity: 0;"
+  />
+  <div
+    class="div-animation pointer-events-none absolute -inset-px rounded-lg opacity-1 transition duration-300"
+  >
+  </div>
+
+  <!-- Content section positioned at bottom -->
+  <div class="relative z-20 h-full flex flex-col justify-end">
+    <div class="p-4 space-y-3">
+      <div>
+        <h3 class="text-white font-bold text-xl leading-tight">
+          {title}
+        </h3>
+        <span class="text-gray-200 font-normal text-sm"
+          >{year && `(${year})`}</span
+        >
+      </div>
+
+      <p
+        class="text-sm text-gray-100 leading-relaxed [&>strong]:text-white"
+        set:html={description}
+      />
+
+      <div class="flex flex-wrap gap-2">
+        {tags && tags.map((tag) => <KBD>{tag}</KBD>)}
+      </div>
+
+      <div
+        class="nav flex gap-2 justify-start pt-2"
+        data-orientation="horizontal"
+      >
+        {
+          link && (
+            <IconButton href={link} ariaLabel="Link al sitio del proyecto">
+              <GoToIcon class="size-4 stroke-white/90" />
+            </IconButton>
+          )
+        }
+        {
+          github && (
+            <IconButton href={github} ariaLabel="Link al GitHub del proyecto">
+              <GitHubIcon class="size-4 stroke-white/90" />
+            </IconButton>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const divs = document.querySelectorAll(
+    '[role="contentinfo"]'
+  ) as NodeListOf<HTMLDivElement>;
+
+  divs.forEach((div) => {
+    const inputAnimation = div.querySelector(
+      ".input-animation"
+    ) as HTMLInputElement;
+
+    const divAnimation = div.querySelector(".div-animation") as HTMLDivElement;
+    
+    // Get the bgColor from the data attribute
+    const bgColor = div.dataset.bgColor || "rgba(220, 197, 58, 0.07)";
+
+    let focused = false;
+    let position = { x: 0, y: 0 };
+
+    div.addEventListener("mousemove", (e: MouseEvent) => {
+      if (focused) return;
+      const rect = div.getBoundingClientRect();
+      position = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      };
+
+      if (inputAnimation) {
+        inputAnimation.style.webkitMaskImage = `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`;
+      }
+
+      if (divAnimation) {
+        divAnimation.style.background = `radial-gradient(600px at ${position.x}px ${position.y}px, ${bgColor}, transparent 60%)`;
+      }
+    });
+
+    div.addEventListener("focus", () => {
+      focused = true;
+      if (inputAnimation) inputAnimation.style.opacity = "1";
+      if (divAnimation) divAnimation.style.opacity = "1";
+    });
+
+    div.addEventListener("blur", () => {
+      focused = false;
+      if (inputAnimation) inputAnimation.style.opacity = "0";
+      if (divAnimation) divAnimation.style.opacity = "0";
+    });
+
+    div.addEventListener("mouseenter", () => {
+      if (inputAnimation) inputAnimation.style.opacity = "1";
+      if (divAnimation) divAnimation.style.opacity = "1";
+    });
+
+    div.addEventListener("mouseleave", () => {
+      if (inputAnimation) inputAnimation.style.opacity = "0";
+      if (divAnimation) divAnimation.style.opacity = "0";
+    });
+  });
+</script>

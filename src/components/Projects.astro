@@ -1,36 +1,48 @@
 ---
 import Subtitle from "@components/Subtitle.astro";
 // import ProjectItem from "@components/ProjectItem.astro";
+import ProjectItemBG from "./ProjectItemBG.astro";
 
-// const PROJECTS = [
-//   {
-//     title: "ABM Turismo",
-//     description:
-//       "Proyecto final del curso MERN en <strong>PilarTecno</strong>, donde desarrollé el <strong>Frontend, Backend, base de datos y aplicación móvil</strong> para un sistema ABM de lugares turísticos en La Rioja.",
-//     github: "https://github.com/leomoreno99/integrador-pilartecno",
-//     image: "/projects/abm-turismo.webp",
-//     tags: ["React", "React Native", "NodeJs", "ExpressJs", "MongoDB"],
-//     year: "2022",
-//   },
-//   {
-//     title: "Tienda Repuestos",
-//     description:
-//       "Desarrollo de una tienda online como proyecto final para una asignatura universitaria, en la que implementamos el <strong>Frontend, Backend y base de datos</strong> utilizando arquitectura <strong>REST</strong>.",
-//     github: "https://github.com/leomoreno99/cucco-repuestos-frontend",
-//     image: "/projects/cucco-repuestos.webp",
-//     tags: ["React", "Styled Components", "NodeJs", "MongoDB"],
-//     year: "2021",
-//   },
-// ];
+const PROJECTS = [
+  //   {
+  //     title: "ABM Turismo",
+  //     description:
+  //       "Proyecto final del curso MERN en <strong>PilarTecno</strong>, donde desarrollé el <strong>Frontend, Backend, base de datos y aplicación móvil</strong> para un sistema ABM de lugares turísticos en La Rioja.",
+  //     github: "https://github.com/leomoreno99/integrador-pilartecno",
+  //     image: "/projects/abm-turismo.webp",
+  //     tags: ["React", "React Native", "NodeJs", "ExpressJs", "MongoDB"],
+  //     year: "2022",
+  //   },
+  //   {
+  //     title: "Tienda Repuestos",
+  //     description:
+  //       "Desarrollo de una tienda online como proyecto final para una asignatura universitaria, en la que implementamos el <strong>Frontend, Backend y base de datos</strong> utilizando arquitectura <strong>REST</strong>.",
+  //     github: "https://github.com/leomoreno99/cucco-repuestos-frontend",
+  //     image: "/projects/cucco-repuestos.webp",
+  //     tags: ["React", "Styled Components", "NodeJs", "MongoDB"],
+  //     year: "2021",
+  //   },
+  {
+    title: "useFlags",
+    description:
+      "Un hook personalizado de React que simplifica la gestión de múltiples flags booleanos en un solo estado. Diseñado para manejar estados complejos de UI como modales, loaders, visibilidad de componentes, etc. de manera eficiente y type-safe.",
+    github: "https://github.com/leomoreno99/use-flags-state",
+    link: "https://useflags.vercel.app",
+    image: "/projects/use-flags.webp",
+    tags: ["React", "TypeScript", "Custom Hooks"],
+    bgColor: "rgba(19, 180, 30, 0.1)",
+    // year: "2025",
+  },
+];
 ---
 
 <Subtitle>Proyectos</Subtitle>
-<!-- <div class="flex gap-6 md:gap-12 flex-wrap mx-auto"> -->
-<div class="flex gap-6 md:gap-12 flex-wrap justify-center mx-auto">
-  <!-- {PROJECTS.map((project) => <ProjectItem {...project} />)} -->
-  <h3
+<div class="flex gap-6 md:gap-12 flex-wrap mx-auto">
+  <!-- <div class="flex gap-6 md:gap-12 flex-wrap justify-center mx-auto"> -->
+  {PROJECTS.map((project) => <ProjectItemBG {...project} />)}
+  <!-- <h3
     class="text-5xl md:text-6xl xl:text-7xl text-yellow-100/20 font-noto-serif italic font-medium mb-9"
   >
     Proyectos en desarrollo...
-  </h3>
+  </h3> -->
 </div>
