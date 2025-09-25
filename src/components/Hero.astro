@@ -7,18 +7,22 @@ const SOCIAL_NETWORKS = [
   {
     name: "linkedin",
     href: "https://www.linkedin.com/in/leomoreno99/",
+    ariaLabel: "Link al perfil de LinkedIn",
   },
   {
     name: "github",
     href: "https://github.com/leomoreno99",
+    ariaLabel: "Link al perfil de GitHub",
   },
   {
     name: "email",
     href: "mailto:leomoreno330@gmail.com",
+    ariaLabel: "Link al correo electrónico",
   },
   {
     name: "instagram",
     href: "https://www.instagram.com/leo_moreno99/",
+    ariaLabel: "Link al perfil de Instagram",
   },
 ];
 ---
@@ -38,8 +42,8 @@ const SOCIAL_NETWORKS = [
     Moreno
   </h2>
   <div class="flex gap-2 justify-end mt-6 md:mt-12">
-    <Button href="mailto:leomoreno330@gmail.com"> CONTÁCTAME </Button>
-    <Button href="https://www.linkedin.com/in/leomoreno99/"> LINKEDIN </Button>
+    <Button href="mailto:leomoreno330@gmail.com" ariaLabel="Link al correo electrónico"> CONTÁCTAME </Button>
+    <Button href="https://www.linkedin.com/in/leomoreno99/" ariaLabel="Link al perfil de LinkedIn"> LINKEDIN </Button>
   </div>
 </div>
 <div class="md:-mt-[69px] xl:-mt-[72px]">
@@ -55,7 +59,7 @@ const SOCIAL_NETWORKS = [
         ))
       }
     </ul>
-    <SocialButton name="MIRA MI CV" href="/cv-leomoreno.pdf" />
+    <SocialButton name="MIRA MI CV" href="/cv-leomoreno.pdf" ariaLabel="Link al CV" />
   </nav>
 </div>
 <!-- <div class="fixed bottom-12 left-12">

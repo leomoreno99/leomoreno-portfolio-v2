@@ -1,11 +1,12 @@
 ---
-const { href, name } = Astro.props;
+const { href, name, ariaLabel } = Astro.props;
 ---
 
 <a
 href={href}	
 target="_blank"
 rel="noreferrer"
+aria-label={ariaLabel}
 >
 <button
   class="group relative inline-flex items-center justify-center md:text-sm xl:text-base"
