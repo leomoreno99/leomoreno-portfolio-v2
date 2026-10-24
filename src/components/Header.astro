@@ -24,7 +24,7 @@ const navItems = [
 ];
 ---
 
-<header class="fixed inset-0 w-full flex items-center justify-center z-50">
+<header class="fixed top-0 left-0 right-0 w-full flex items-center justify-center z-50 h-[100px]">
   <nav
     class="flex justify-between items-center w-full max-w-lg md:max-w-3xl xl:max-w-[1200px]"
   >
@@ -44,6 +44,7 @@ const navItems = [
 
 <style>
   header {
+    height: 100px;
     animation: nav-shadown 1s linear both;
     animation-timeline: scroll();
     animation-range: 0 100px;
@@ -51,10 +52,16 @@ const navItems = [
 
   @keyframes nav-shadown {
     0% {
-      @apply bg-gray-800/0 h-[100px];
+      background-color: rgba(31, 41, 55, 0);
+      height: 100px;
     }
     to {
-      @apply shadow-lg ring-1 backdrop-blur-lg ring-white/10 h-[50px];
+      background-color: rgba(31, 41, 55, 0.4);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      height: 50px;
     }
   }
 </style>
