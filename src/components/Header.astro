@@ -45,7 +45,10 @@ const navItems = [
 <style>
   header {
     height: 100px;
-    animation: nav-shadown 1s linear both;
+    animation-name: nav-shadown;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
     animation-timeline: scroll();
     animation-range: 0 100px;
   }
@@ -59,8 +62,8 @@ const navItems = [
       background-color: rgba(31, 41, 55, 0.4);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
       height: 50px;
     }
   }
